@@ -1,0 +1,76 @@
+\documentclass[12pt,a4paper]{book} %\chapter / \section / \subsection 三级
+% 导言区，加载宏包和各项设置
+\usepackage{ctex} % 中文支持
+\usepackage{import} % 每部分编译文件只在各子文件夹中寻找
+\usepackage{standalone} %无视imput和import文件中的宏包与环境
+%\usepackage[utf8]{inputenc} %非英语、非中文的欧洲语言排版
+\usepackage{amsmath} %包含数学公式
+\usepackage{amssymb} %数学字体与符号，必备。注意此宏包已经包括了 amsfonts，不要重复使用
+\newtheorem{function}{Formula}
+\usepackage{graphicx} %插入图片
+\usepackage{natbib} % Use natbib to manage the reference % 此处示意对参考文献和索引的设置
+\usepackage{makeidx} %在最后做索引
+\usepackage{xcolor} % 带上颜色
+\usepackage{titlesec} %设置分级section样式
+\titleformat{\subsection}[block]{\color{blue}\Large\bfseries\filcenter}{}{1em}{}
+\makeindex
+\bibliographystyle{apalike}
+\begin{document}
+\frontmatter % 小写罗马字母页码，其后chapter不编号
+\title{\LARGE{\emph{\textbf{\kaishu 研究生期间笔记}}}} \author{李某\thanks{E-mail~:~bk$\_$li@139.com}\and 爱他和他爱的人们\thanks{家人、朋友}} \date{始于2017年06月29日，一直在路上}
+\maketitle % 标题页 可使用\titlepage命令构建环境
+% 前言章节preface.tex
+\import{notedetails/}{preface} 
+ % 目录，build twice
+\tableofcontents
+ % 以下是正文部分，页码为阿拉伯数字，其后章节编号正常
+\mainmatter
+\chapter{组会}
+\indent 研一上学期每周四14：30——17：00
+\section{研一上学期}
+\import{seminar/}{SongLabSeminarFirstUp}
+\section{研一下学期}
+%...
+\chapter{实验记录}
+\indent 李某经历或接手的实验与记录
+\section{Cue $\alpha$与N2pc、CDA的关系实验——条件一}
+\indent 从2018年4月24日开始
+\import{ExperimentRecording/}{NewCueCon1}
+\chapter{研究生课堂笔记}
+\section{神经科学基础}
+\indent 研一上学期每周一18：00——19：40
+\import{course/}{神经科学基础}
+\section{心理学研究方法}
+\indent 研一上学期每周五8：00——10：45
+\import{course/}{心理学研究方法}
+\section{动力系统分析}
+\indent 研一上学期每周五13：30——15：10
+\import{course/}{动力系统分析}
+\section{认知神经科学}
+\indent 研一上学期每周二13：30——15：15
+\import{course/}{认知神经科学}
+\section{神经信号处理}
+\indent 研一下学期每周四18：00——20：45
+\import{course/}{神经信号处理}
+\chapter{讲座}
+\indent 研究生期间所参加的讲座
+\import{course/}{lecture}
+% 附录
+\chapter{兴趣研究}
+\section{\LaTeX}
+\indent 该工具用于演示文稿、笔记、参考文献、排版
+\import{interests/}{latexnote}
+\section{EEGLAB}
+\indent 该工具用于脑电数据的分析
+\import{interests/}{EEGLABnote}
+\section{ERP}
+\indent 阅读接触的ERP成分
+\import{interests/}{ERPnote}
+\appendix
+ % 后记部分，页码格式不变，其后章节不编号
+\backmatter
+% 后记prologue.tex
+% 利用BibTeX 工具生成参考文献，其内容为路径/bib文件名
+%\bibliography{...} 
+\printindex % 利用makeindex 工具生成索引
+\end{document}
